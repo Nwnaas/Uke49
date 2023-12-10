@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave2</title>
+</head>
+<body>
+<h1>Oppgave 2</h1>
+
+<form id="oppgaveForm">
+    <label for="oppgaveTitle">Oppgavetittel:</label>
+    <input type="text" id="oppgaveTitle" name="oppgaveTitle" required>
+
+    <label for="oppgaveDescription">Oppgavebeskrivelse:</label>
+    <textarea id="oppgaveDescription" name="oppgaveDescription" required></textarea>
+
+    <button type="button" onclick="addOppgave()">Legg til oppgave</button>
+</form>
+
+<h2>Oppgaveliste</h2>
+<ul id="oppgaveList"></ul>
+
+<script>
+    function addOppgave() {
+        var oppgaveTitle = document.getElementById("oppgaveTitle").value;
+        var oppgaveDescription = document.getElementById("oppgaveDescription").value;
+
+        var list = document.getElementById("oppgaveList");
+        var listItem = document.createElement("li");
+        listItem.innerHTML = `<strong>${oppgaveTitle}</strong>: ${oppgaveDescription} <button onclick="deleteOppgave(this)">Slett</button>`;
+        list.appendChild(listItem);
+    }
+
+    function deleteOppgave(button) {
+        var listItem = button.parentNode;
+        var list = listItem.parentNode;
+        list.removeChild(listItem);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Oppgave1</title>
+</head>
+<body>
+<h1>Oppgave 1</h1>
+
+<form id="produktForm">
+  <label for="produktName">Produktnavn:</label>
+  <input type="text" id="produktName" name="produktName" required></br></br>
+
+  <label for="produktPrice">Produktpris:</label>
+  <input type="number" id="produktPrice" name="produktPrice" min="0" required></br></br>
+
+  <button type="button" onclick="addProdukt()">Legg til produkt</button>
+</form>
+
+<h2>Produktliste</h2>
+
+<table id="produktTable" >
+  <tr>
+    <th>Produktnavn</th>
+    <th>Produktpris</th>
+    <th>Handling</th>
+  </tr>
+</table>
+
+<script>
+  function addProdukt() {
+    var produktName = document.getElementById("produktName").value;
+    var produktPrice = document.getElementById("produktPrice").value;
+
+    var table = document.getElementById("produktTable");
+    var row = table.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    cell1.innerHTML = produktName;
+    cell2.innerHTML = produktPrice;
+    cell3.innerHTML = '<button onclick="deleteProdukt(this)">Slett</button>';
+  }
+
+  function deleteProdukt(row) {
+    var rowIndex = row.parentNode.parentNode.rowIndex;
+    document.getElementById("produktTable").deleteRow(rowIndex);
+  }
+
+</script>
+</body>
+</html>
